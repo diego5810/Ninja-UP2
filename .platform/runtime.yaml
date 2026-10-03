@@ -1,0 +1,24 @@
+project: ninja-up
+platform_owner: ai-project-manager
+jarvis_managed: true
+runtime:
+  platform: oracle
+  deployment_profile: node-systemd-nginx
+  service_prefix: ninja-up
+  internal_port: 8789
+  health_path: /health
+  public_domain: ninja.colhebem.com.br
+  data_dir: /home/ubuntu/ninja-up-data
+  log_dir: /home/ubuntu/ninja-up-logs
+  env_file: /etc/ninja-up/ninja-up.env
+governance:
+  destructive_actions_require_approval: true
+  secret_changes_require_approval: true
+  deploy_requires_approval: true
+  database_isolated: true
+  secrets_isolated: true
+observability:
+  healthcheck: true
+  logs: journald
+  restart_policy: always
+  backups: required
